@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
 import { Header } from './header'
 import { Footer } from './footer'
@@ -12,26 +11,14 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://nim-fawn.vercel.app/'),
-  alternates: {
-    canonical: '/'
-  },
   title: {
-    default: 'Nim - Personal website template',
-    template: '%s | Nim'
+    default: 'Baurzhan Beglerov',
+    template: '%s — Baurzhan Beglerov'
   },
-  description:  'Nim is a free and open-source personal website template built with Next.js 15, React 19 and Motion-Primitives.',
+  description:  'My name is Baurzhan Beglerov. I create simple and fast web interfaces. I work as a Fullstack Engineer.',
 };
 
-const geist = Geist({
-  variable: '--font-geist',
-  subsets: ['latin'],
-})
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-})
+// Using system fonts to avoid external font fetching
 
 export default function RootLayout({
   children,
@@ -41,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geist.variable} ${geistMono.variable} bg-white tracking-tight antialiased dark:bg-zinc-950`}
+        className={`bg-white tracking-tight antialiased dark:bg-zinc-950`}
       >
         <ThemeProvider
           enableSystem={true}

@@ -137,13 +137,14 @@ export default function Personal() {
       >
         <div className="flex-1">
           <p className="text-zinc-600 dark:text-zinc-400">
-            Focused on creating intuitive and performant web experiences.
-            Bridging the gap between design and development.
+            My name is Baurzhan Beglerov. I create simple and fast web interfaces.
+            I work as a Fullstack Engineer.
           </p>
         </div>
       </motion.section>
 
-      <motion.section
+      {PROJECTS.length > 0 && (
+        <motion.section
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
       >
@@ -155,14 +156,9 @@ export default function Personal() {
                 <ProjectVideo src={project.video} />
               </div>
               <div className="px-1">
-                <a
-                  className="font-base group relative inline-block font-[450] text-zinc-900 dark:text-zinc-50"
-                  href={project.link}
-                  target="_blank"
-                >
+                <span className="font-base relative inline-block font-[450] text-zinc-900 dark:text-zinc-50">
                   {project.name}
-                  <span className="absolute bottom-0.5 left-0 block h-[1px] w-full max-w-0 bg-zinc-900 dark:bg-zinc-50 transition-all duration-200 group-hover:max-w-full"></span>
-                </a>
+                </span>
                 <p className="text-base text-zinc-600 dark:text-zinc-400">
                   {project.description}
                 </p>
@@ -171,19 +167,18 @@ export default function Personal() {
           ))}
         </div>
       </motion.section>
+      )}
 
-      <motion.section
+      {WORK_EXPERIENCE.length > 0 && (
+        <motion.section
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
       >
         <h3 className="mb-5 text-lg font-medium">Work Experience</h3>
         <div className="flex flex-col space-y-2">
           {WORK_EXPERIENCE.map((job) => (
-            <a
+            <div
               className="relative overflow-hidden rounded-2xl bg-zinc-300/30 p-[1px] dark:bg-zinc-600/30"
-              href={job.link}
-              target="_blank"
-              rel="noopener noreferrer"
               key={job.id}
             >
               <Spotlight
@@ -205,12 +200,14 @@ export default function Personal() {
                   </p>
                 </div>
               </div>
-            </a>
+            </div>
           ))}
         </div>
       </motion.section>
+      )}
 
-      <motion.section
+      {BLOG_POSTS.length > 0 && (
+        <motion.section
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
       >
@@ -245,26 +242,30 @@ export default function Personal() {
           </AnimatedBackground>
         </div>
       </motion.section>
+      )}
 
-      <motion.section
+      {(EMAIL || SOCIAL_LINKS.length > 0) && (
+        <motion.section
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
       >
         <h3 className="mb-5 text-lg font-medium">Connect</h3>
-        <p className="mb-5 text-zinc-600 dark:text-zinc-400">
-          Feel free to contact me at{' '}
-          <a className="underline dark:text-zinc-300" href={`mailto:${EMAIL}`}>
-            {EMAIL}
-          </a>
-        </p>
-        <div className="flex items-center justify-start space-x-3">
-          {SOCIAL_LINKS.map((link) => (
-            <MagneticSocialLink key={link.label} link={link.link}>
-              {link.label}
-            </MagneticSocialLink>
-          ))}
-        </div>
+        {EMAIL && (
+          <p className="mb-5 text-zinc-600 dark:text-zinc-400">
+            Связаться со мной: <a className="underline dark:text-zinc-300" href={`mailto:${EMAIL}`}>{EMAIL}</a>
+          </p>
+        )}
+        {SOCIAL_LINKS.length > 0 && (
+          <div className="flex items-center justify-start space-x-3">
+            {SOCIAL_LINKS.map((link) => (
+              <MagneticSocialLink key={link.label} link={link.link}>
+                {link.label}
+              </MagneticSocialLink>
+            ))}
+          </div>
+        )}
       </motion.section>
+      )}
     </motion.main>
   )
 }
