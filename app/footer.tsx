@@ -72,7 +72,7 @@ export function Footer() {
       <div className="flex items-center justify-between">
         <div>
           <TextLoop className="text-xs text-zinc-500">
-            <span>© 2024 Baurzhan Beglerov.</span>
+            <span>© {new Date().getFullYear()} Baurzhan Beglerov.</span>
             <span>Все права защищены.</span>
           </TextLoop>
         </div>

@@ -100,6 +100,8 @@ function MagneticSocialLink({
     <Magnetic springOptions={{ bounce: 0 }} intensity={0.3}>
       <a
         href={link}
+        target="_blank"
+        rel="noopener noreferrer"
         className="group relative inline-flex shrink-0 items-center gap-[1px] rounded-full bg-zinc-100 px-2.5 py-1 text-sm text-black transition-colors duration-200 hover:bg-zinc-950 hover:text-zinc-50 dark:bg-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-700"
       >
         {children}
@@ -136,10 +138,22 @@ export default function Personal() {
         transition={TRANSITION_SECTION}
       >
         <div className="flex-1">
-          <p className="text-zinc-600 dark:text-zinc-400">
-            My name is Baurzhan Beglerov. I create simple and fast web interfaces.
-            I work as a Fullstack Engineer.
-          </p>
+          <div className="prose prose-zinc max-w-none dark:prose-invert">
+            <p>
+              Hi, I’m <strong>Baurzhan Beglerov</strong> — a
+              <strong> Fullstack Engineer</strong> focused on building
+              accessible, fast, and clean <strong>React/Next.js</strong> web
+              experiences. I love performance, DX, and thoughtful UI motion.
+            </p>
+            <p>
+              I can help with frontend architecture, design systems,
+              animations, and product engineering from idea to production.
+            </p>
+            <p className="not-prose mt-4 flex items-center gap-2">
+              <MagneticSocialLink link="https://github.com/iowathe3rd">GitHub</MagneticSocialLink>
+              <MagneticSocialLink link="https://www.linkedin.com/in/baurzhan-beglerov">LinkedIn</MagneticSocialLink>
+            </p>
+          </div>
         </div>
       </motion.section>
 
